@@ -1,0 +1,116 @@
+@keyframes toast-in-right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes toast-in-left {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.notify {
+  box-sizing: border-box;
+  position: absolute;
+  overflow: hidden auto;
+  z-index: 9999;
+  max-height: 100%;
+  width: 500px;
+  padding: 10px;
+  &--top-right {
+    top: 0;
+    right: 0;
+  }
+
+  &--top-right &__item {
+    transition: transform 0.6s ease-in-out;
+    animation: toast-in-right 0.7s;
+  }
+
+  &--bottom-right {
+    bottom: 0;
+    right: 0;
+  }
+
+  &--bottom-right &__item {
+    transition: transform 0.6s ease-in-out;
+    animation: toast-in-right 0.7s;
+  }
+
+  &--top-left {
+    top: 0;
+    left: 0;
+  }
+
+  &--top-left &__item {
+    transition: transform 0.6s ease-in;
+    animation: toast-in-left 0.7s;
+  }
+
+  &--bottom-left {
+    bottom: 0;
+    left: 0;
+  }
+
+  &--bottom-left &__item {
+    transition: transform 0.6s ease-in;
+    animation: toast-in-left 0.7s;
+  }
+
+  &__item {
+    position: relative;
+    color: #ffffff;
+    padding: 5px;
+    border-radius: 10px;
+    display: flex;
+    margin-bottom: 10px;
+    box-shadow: 0px 4px 8px rgba(18, 22, 52, 0.16);
+    &__icon {
+      position: absolute;
+      left: 10px;
+      top: 14px;
+    }
+    &__text {
+      display: flex;
+      font-size: 13px;
+      justify-content: space-between;
+      width: 85%;
+      margin: 0 auto;
+    }
+    &__message {
+      text-decoration: underline;
+    }
+    &__close {
+      position: absolute;
+      right: 10px;
+      top: 14px;
+    }
+
+    &--success {
+      background-color: #53c68c;
+      display: flex;
+    }
+    &--danger {
+      background-color: #e62e00;
+    }
+    &--warning {
+      background-color: #ff9900;
+    }
+    &--regular {
+      background-color: #008080;
+    }
+    &--info {
+      background-color: #9900ff;
+    }
+    &--primary {
+      background-color: #19194d;
+    }
+  }
+}
