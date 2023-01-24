@@ -56,7 +56,7 @@ export const NotifyItem = ({
     <div className={bem(null, [type])}>
       {icon === "check" ? (
         <UilCheckCircle className={bem("icon")} size="25" color="#ffffff" />
-      ) : icon === "danger" ? (
+      ) : icon === "error" ? (
         <UilExclamationCircle
           className={bem("icon")}
           size="25"
