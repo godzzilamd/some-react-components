@@ -89,13 +89,13 @@
     }
     &__close {
       position: absolute;
+      cursor: pointer;
       right: 10px;
       top: 14px;
     }
 
     &--success {
       background-color: #53c68c;
-      display: flex;
     }
     &--danger {
       background-color: #e62e00;
