@@ -8,7 +8,7 @@ import {
   UilExclamationTriangle,
   UilTimes,
 } from "@iconscout/react-unicons";
-import {NotificationTypes} from "./Notify.types";
+import { NotificationTypes } from "./Notify.types";
 
 const bem = makeBEM("notify__item");
 
@@ -24,20 +24,20 @@ export interface NotifyItemProps extends NotifyItemType {
 }
 
 const notificationTypes = {
-  [NotificationTypes.REGULAR]: 'info',
-  [NotificationTypes.PRIMARY]: 'info',
-  [NotificationTypes.SUCCESS]: 'check',
-  [NotificationTypes.DANGER]: 'error',
-  [NotificationTypes.INFO]: 'info',
-  [NotificationTypes.WARNING]: 'warning',
+  [NotificationTypes.REGULAR]: "info",
+  [NotificationTypes.PRIMARY]: "info",
+  [NotificationTypes.SUCCESS]: "check",
+  [NotificationTypes.DANGER]: "error",
+  [NotificationTypes.INFO]: "info",
+  [NotificationTypes.WARNING]: "warning",
 };
 
-const notificationIcons: { [key: string]: any }  = {
+const notificationIcons: { [key: string]: any } = {
   info: UilInfoCircle,
   check: UilCheckCircle,
   error: UilExclamationCircle,
   warning: UilExclamationTriangle,
-}
+};
 
 export const NotifyItem = ({
   type = NotificationTypes.SUCCESS,
@@ -50,8 +50,7 @@ export const NotifyItem = ({
 
   return (
     <div className={bem(null, [type])}>
-
-        <Icon className={bem("icon")} size="25" color="#ffffff" />
+      <Icon className={bem("icon")} size="25" color="#ffffff" />
 
       <div className={bem("text")}>
         {title && <p className={bem("title")}>{title}</p>}
