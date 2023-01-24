@@ -8,11 +8,12 @@ import {
   UilExclamationTriangle,
   UilTimes,
 } from "@iconscout/react-unicons";
+import {NotificationTypes} from "./Notify.types";
 
 const bem = makeBEM("notify__item");
 
 export interface NotifyItemType {
-  type?: "regular" | "primary" | "success" | "danger" | "info" | "warning";
+  type?: NotificationTypes;
 }
 
 export interface NotifyItemProps extends NotifyItemType {
@@ -22,55 +23,36 @@ export interface NotifyItemProps extends NotifyItemType {
   onClose?: () => void;
 }
 
+const notificationTypes = {
+  [NotificationTypes.REGULAR]: 'info',
+  [NotificationTypes.PRIMARY]: 'info',
+  [NotificationTypes.SUCCESS]: 'check',
+  [NotificationTypes.DANGER]: 'error',
+  [NotificationTypes.INFO]: 'info',
+  [NotificationTypes.WARNING]: 'warning',
+};
+
+const notificationIcons: { [key: string]: any }  = {
+  info: UilInfoCircle,
+  check: UilCheckCircle,
+  error: UilExclamationCircle,
+  warning: UilExclamationTriangle,
+}
+
 export const NotifyItem = ({
-  type = "success",
+  type = NotificationTypes.SUCCESS,
   title,
   description,
   icon,
   onClose,
 }: NotifyItemProps) => {
-  if (!icon) {
-    switch (type) {
-      case "success":
-        icon = "check";
-        break;
-      case "danger":
-        icon = "error";
-        break;
-      case "info":
-        icon = "info";
-        break;
-      case "warning":
-        icon = "warning";
-        break;
-      case "regular":
-        icon = "info";
-        break;
-      case "primary":
-        icon = "info";
-        break;
-    }
-  }
+  const Icon = !icon && notificationIcons[notificationTypes[type]];
 
   return (
     <div className={bem(null, [type])}>
-      {icon === "check" ? (
-        <UilCheckCircle className={bem("icon")} size="25" color="#ffffff" />
-      ) : icon === "error" ? (
-        <UilExclamationCircle
-          className={bem("icon")}
-          size="25"
-          color="#ffffff"
-        />
-      ) : icon === "warning" ? (
-        <UilExclamationTriangle
-          className={bem("icon")}
-          size="25"
-          color="#ffffff"
-        />
-      ) : (
-        <UilInfoCircle className={bem("icon")} size="25" color="#ffffff" />
-      )}
+
+        <Icon className={bem("icon")} size="25" color="#ffffff" />
+
       <div className={bem("text")}>
         {title && <p className={bem("title")}>{title}</p>}
         {description && <p className={bem("message")}>{description}</p>}

@@ -7,6 +7,7 @@ function App() {
     <>
       <NotifyProvider>
         <NotifyContainer />
+
         <Regular
           title="Notification Text Goes Here..."
           description="Example Link Goes Here..."
